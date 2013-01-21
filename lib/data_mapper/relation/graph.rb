@@ -57,8 +57,6 @@ module DataMapper
 
       # Relation node class that is used in this registry
       #
-      # @see Engine#relation_node_class
-      #
       # @example
       #
       #   DataMapper[Person].relations.node_class
@@ -69,8 +67,6 @@ module DataMapper
       attr_reader :node_class
 
       # Relation edge class that is used in this registry
-      #
-      # @see Engine#relation_edge_class
       #
       # @example
       #
@@ -94,7 +90,11 @@ module DataMapper
 
       # Initialize a new relation registry object
       #
-      # @param [Engine]
+      # @param [Class] node_class
+      #   the class used to construct nodes in the graph
+      #
+      # @param [Class] edge_class
+      #   the class used to construct edges in the graph
       #
       # @return [undefined]
       #
