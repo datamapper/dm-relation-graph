@@ -18,7 +18,6 @@ module DataMapper
 end # module DataMapper
 
 require 'abstract_type'
-require 'descendants_tracker'
 require 'equalizer'
 require 'inflector'
 
