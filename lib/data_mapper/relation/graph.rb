@@ -119,19 +119,6 @@ module DataMapper
         self
       end
 
-      # Freezes entire graph
-      #
-      # @return [self]
-      #
-      # @api private
-      def freeze
-        super
-        @edges.freeze
-        @nodes.freeze
-        @connectors.freeze
-        self
-      end
-
       # Add new relation node to the graph
       #
       # @return [self]
