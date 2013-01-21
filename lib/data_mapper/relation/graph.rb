@@ -257,19 +257,19 @@ module DataMapper
         edges.detect { |edge| edge.name.to_sym == name.to_sym }
       end
 
-      # The aliases used to join 2 of this registry's nodes
+      # The header to use for automatic renaming when joining two nodes
       #
-      # @param [#to_s] relation_name
-      #   the name of the relation wrapped by a node
+      # @see Node.header
       #
-      # @param [Mapper::AttributeSet] attribute_set
-      #   the attribute set to alias
+      # @param [*args] args
+      #   the arguments accepted by {Node.header}
       #
-      # @return [Object] the aliases provided by a specific engine
+      # @return [Header]
+      #   the header for the passed in arguments
       #
       # @api private
-      def header(relation_name, attribute_set)
-        node_class.header(relation_name, attribute_set)
+      def header(*args)
+        node_class.header(*args)
       end
 
     end # class Graph
