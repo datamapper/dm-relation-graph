@@ -18,6 +18,7 @@ module DataMapper
 end # module DataMapper
 
 require 'abstract_type'
+require 'adamantium'
 require 'equalizer'
 require 'inflector'
 
