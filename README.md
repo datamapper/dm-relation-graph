@@ -147,8 +147,8 @@ people    = graph[:people]
 addresses = graph[:addresses]
 
 # return tuples as illustrated by this array of hashes.
-# A real implementation would most likely yield sets or
-# arrays of veritas tuple objects.
+# A real implementation would most likely yield (ordered)
+# sets containing veritas tuple objects.
 #
 # [
 #   {
