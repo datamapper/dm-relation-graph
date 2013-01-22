@@ -8,7 +8,7 @@ gem 'equalizer',     :git => 'https://github.com/dkubb/equalizer'
 gem 'abstract_type', :git => 'https://github.com/dkubb/abstract_type'
 gem 'adamantium',    :git => 'https://github.com/dkubb/adamantium'
 gem 'equalizer',     :git => 'https://github.com/dkubb/equalizer'
-#gem 'veritas',       :git => 'https://github.com/dkubb/veritas'
+gem 'veritas',       :git => 'https://github.com/mbj/veritas'
 
 group :development do
   gem 'ruby-graphviz'
