@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::ViaDefinition, '#via_target_key' do
+describe Relation::Relationship::ViaDefinition, '#via_target_key' do
   subject { object.via_target_key }
 
   let(:object)       { described_class.new(relationship, mapper_registry) }
@@ -18,15 +18,15 @@ describe Relationship::ViaDefinition, '#via_target_key' do
   let(:song_tag_model) { mock_model('SongTag') }
   let(:tag_model)      { mock_model('Tag') }
 
-  let(:song_tags) { Relationship::OneToMany .new(:song_tags, song_model, song_tag_model) }
-  let(:song)      { Relationship::ManyToOne .new(:song, song_tag_model, song_model) }
-  let(:tag)       { Relationship::ManyToOne .new(:tag, song_tag_model, tag_model) }
-  let(:tags)      { Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
+  let(:song_tags) { Relation::Relationship::OneToMany .new(:song_tags, song_model, song_tag_model) }
+  let(:song)      { Relation::Relationship::ManyToOne .new(:song, song_tag_model, song_model) }
+  let(:tag)       { Relation::Relationship::ManyToOne .new(:tag, song_tag_model, tag_model) }
+  let(:tags)      { Relation::Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
 
   let(:via_target_key) { [ :id ] }
 
   context 'when relationship.via is a Symbol' do
-    let(:tags) { Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
+    let(:tags) { Relation::Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
     let(:via) { :tag }
 
     it { should eql(via_target_key) }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship, '#operation' do
+describe Relation::Relationship, '#operation' do
   subject { object.operation }
 
   let(:object)       { subclass.new(name, source_model, target_model, options) }

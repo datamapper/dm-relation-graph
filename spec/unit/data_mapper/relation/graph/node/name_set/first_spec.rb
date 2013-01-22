@@ -21,10 +21,10 @@ describe Relation::Graph::Node::NameSet, '#first' do
   let(:info_model)          { mock_model('Info') }
   let(:info_content_model)  { mock_model('InfoContent') }
 
-  let(:song_tags)     { Relationship::OneToMany .new(:song_tags,     song_model, song_tag_model) }
-  let(:tags)          { Relationship::ManyToMany.new(:tags,          song_model, tag_model,          :through => :song_tags) }
-  let(:funky_infos)   { Relationship::ManyToMany.new(:funky_infos,   song_model, info_model,         :through => :tags, :operation => Proc.new {}) }
-  let(:info_contents) { Relationship::ManyToMany.new(:info_contents, song_model, info_content_model, :through => :funky_infos) }
+  let(:song_tags)     { Relation::Relationship::OneToMany .new(:song_tags,     song_model, song_tag_model) }
+  let(:tags)          { Relation::Relationship::ManyToMany.new(:tags,          song_model, tag_model,          :through => :song_tags) }
+  let(:funky_infos)   { Relation::Relationship::ManyToMany.new(:funky_infos,   song_model, info_model,         :through => :tags, :operation => Proc.new {}) }
+  let(:info_contents) { Relation::Relationship::ManyToMany.new(:info_contents, song_model, info_content_model, :through => :funky_infos) }
 
   it { should be(:songs_X_song_tags) }
 end

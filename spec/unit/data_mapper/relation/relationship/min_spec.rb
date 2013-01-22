@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship, '#min' do
+describe Relation::Relationship, '#min' do
   subject { object.min }
 
   let(:object)       { subclass.new(name, source_model, target_model, options) }

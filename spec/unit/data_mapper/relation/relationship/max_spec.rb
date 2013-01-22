@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship, '#max' do
+describe Relation::Relationship, '#max' do
   subject { object.max }
 
   let(:object)       { subclass.new(name, source_model, target_model, options) }

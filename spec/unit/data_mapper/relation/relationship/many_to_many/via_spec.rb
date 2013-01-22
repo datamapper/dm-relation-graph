@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::ManyToMany, '#via' do
+describe Relation::Relationship::ManyToMany, '#via' do
   subject { object.via }
 
   let(:object) { tags }
@@ -17,10 +17,10 @@ describe Relationship::ManyToMany, '#via' do
   let(:song_tag_model) { mock_model('SongTag') }
   let(:tag_model)      { mock_model('Tag') }
 
-  let(:song_tags) { Relationship::OneToMany .new(:song_tags, song_model, song_tag_model) }
-  let(:song)      { Relationship::ManyToOne .new(:song, song_tag_model, song_model) }
-  let(:tag)       { Relationship::ManyToOne .new(:tag, song_tag_model, tag_model) }
-  let(:tags)      { Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
+  let(:song_tags) { Relation::Relationship::OneToMany .new(:song_tags, song_model, song_tag_model) }
+  let(:song)      { Relation::Relationship::ManyToOne .new(:song, song_tag_model, song_model) }
+  let(:tag)       { Relation::Relationship::ManyToOne .new(:tag, song_tag_model, tag_model) }
+  let(:tags)      { Relation::Relationship::ManyToMany.new(:tags, song_model, tag_model, :through => :song_tags, :via => via) }
 
   before { object.finalize(mapper_registry) }
 

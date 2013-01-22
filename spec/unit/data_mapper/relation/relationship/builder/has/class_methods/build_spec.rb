@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::Builder::Has, '.build' do
+describe Relation::Relationship::Builder::Has, '.build' do
   subject { described_class.build(source, cardinality, name, target_model, options) }
 
   let(:source)       { mock_mapper(source_model) }
@@ -15,20 +15,20 @@ describe Relationship::Builder::Has, '.build' do
   its(:target_model) { should be(target_model) }
 
   context "when cardinality is 1" do
-    it { should be_instance_of(Relationship::OneToOne) }
+    it { should be_instance_of(Relation::Relationship::OneToOne) }
   end
 
   context "when cardinality is > 1" do
     let(:cardinality)  { 2 }
 
     context "when :through is not set" do
-      it { should be_instance_of(Relationship::OneToMany) }
+      it { should be_instance_of(Relation::Relationship::OneToMany) }
     end
 
     context "when :through is set" do
       before { options[:through] = :other }
 
-      it { should be_instance_of(Relationship::ManyToMany) }
+      it { should be_instance_of(Relation::Relationship::ManyToMany) }
     end
   end
 
@@ -36,13 +36,13 @@ describe Relationship::Builder::Has, '.build' do
     let(:cardinality)  { 2..4 }
 
     context "when :through is not set" do
-      it { should be_instance_of(Relationship::OneToMany) }
+      it { should be_instance_of(Relation::Relationship::OneToMany) }
     end
 
     context "when :through is set" do
       before { options[:through] = :other }
 
-      it { should be_instance_of(Relationship::ManyToMany) }
+      it { should be_instance_of(Relation::Relationship::ManyToMany) }
     end
   end
 
@@ -52,7 +52,7 @@ describe Relationship::Builder::Has, '.build' do
     specify do
       expect { subject }.to raise_error(
         ArgumentError,
-        'DataMapper::Relationship::Builder::Has.has(foo, :address, ...): must be Integer or Range but was Symbol'
+        'DataMapper::Relation::Relationship::Builder::Has.has(foo, :address, ...): must be Integer or Range but was Symbol'
       )
     end
   end

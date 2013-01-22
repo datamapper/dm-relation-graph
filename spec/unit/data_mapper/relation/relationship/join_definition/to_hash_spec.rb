@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::JoinDefinition, '#to_hash' do
+describe Relation::Relationship::JoinDefinition, '#to_hash' do
   subject { object.to_hash }
 
   let(:object) { described_class.new(left, right) }

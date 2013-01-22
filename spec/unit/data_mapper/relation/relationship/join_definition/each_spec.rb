@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::JoinDefinition, '#each' do
+describe Relation::Relationship::JoinDefinition, '#each' do
   let(:object) { described_class.new(left, right) }
 
   let(:left)           { described_class::Side.new(left_relation, left_keys) }
@@ -28,7 +28,7 @@ describe Relationship::JoinDefinition, '#each' do
   end
 end
 
-describe Relationship::JoinDefinition do
+describe Relation::Relationship::JoinDefinition do
   subject { described_class.new(left, right) }
 
   let(:object) { described_class }

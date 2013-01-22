@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship::Builder::BelongsTo, '.build' do
+describe Relation::Relationship::Builder::BelongsTo, '.build' do
   subject { described_class.build(source, name, target_model, options) }
 
   let(:source)       { mock_mapper(source_model) }
@@ -9,7 +9,7 @@ describe Relationship::Builder::BelongsTo, '.build' do
   let(:name)         { :address }
   let(:options)      { {} }
 
-  it { should be_instance_of(Relationship::ManyToOne) }
+  it { should be_instance_of(Relation::Relationship::ManyToOne) }
 
   its(:name)         { should be(name) }
   its(:source_model) { should be(source_model) }

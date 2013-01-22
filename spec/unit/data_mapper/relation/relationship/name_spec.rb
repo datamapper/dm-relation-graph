@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship, '#name' do
+describe Relation::Relationship, '#name' do
   subject { object.name }
 
   let(:object)       { subclass.new(name, source_model, target_model) }

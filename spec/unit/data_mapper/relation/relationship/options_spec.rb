@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship, '#options' do
+describe Relation::Relationship, '#options' do
   subject { object.options }
 
   let(:name)         { :songs }
