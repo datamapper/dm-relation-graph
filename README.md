@@ -173,7 +173,10 @@ relation = people.join(addresses, addresses.reference(:person))
 # context that responds to all registered relation names,
 # returning the relation named by the sent method name.
 #
-relation = graph.query do
+# when invoked with no arguments and only a block,
+# an "anonymous" relation will be created, and it won't
+# be stored in the graph.
+relation = graph.relation do
 
   # no need to define variables for people and addresses
 
@@ -189,4 +192,4 @@ end
 relation.to_a.each do |tuple|
   # ...
 end
-``
+```
