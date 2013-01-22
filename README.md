@@ -168,14 +168,9 @@ relation = people.include(:addresses)
 # The following explicit join represents an equivalent relation
 relation = people.join(addresses, addresses.reference(:person))
 
-# The idea behing the #query method accepting a block
-# is that we can instance_eval in a special evaluator
-# context that responds to all registered relation names,
-# returning the relation named by the sent method name.
-#
-# when invoked with no arguments and only a block,
-# an "anonymous" relation will be created, and it won't
-# be stored in the graph.
+# When Graph#relation gets invoked with no arguments but
+# receives a block, an "anonymous" relation will be created,
+# and the returned relation won't be stored in the graph.
 relation = graph.relation do
 
   # no need to define variables for people and addresses
