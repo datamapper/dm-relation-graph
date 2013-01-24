@@ -26,7 +26,7 @@ graph = DataMapper::Relation::Graph.new do
     # corresponding many_to_one relationship
     #
     # aliased to #many_to_one
-    reference :parent, parent_id => id
+    references :parent, parent_id => id
 
     one_to_one :profile, profiles.reference(:person)
 
@@ -105,7 +105,7 @@ graph = DataMapper::Relation::Graph.new do
 
     key id
 
-    reference :person, person_id => people.id
+    references :person, person_id => people.id
   end
 
   base_relation :profiles do
@@ -118,7 +118,7 @@ graph = DataMapper::Relation::Graph.new do
 
     key id
 
-    reference :person, person_id => people.id
+    references :person, person_id => people.id
   end
 
   base_relation :people_links do
@@ -130,8 +130,8 @@ graph = DataMapper::Relation::Graph.new do
 
     key follower_id, followed_id
 
-    reference :follower, follower_id => people.id
-    reference :followed, followed_id => people.id
+    references :follower, follower_id => people.id
+    references :followed, followed_id => people.id
   end
 
   # register arbitrary relations and give them a name.
@@ -154,7 +154,7 @@ graph = DataMapper::Relation::Graph.new do
   # * it's not obvious that the name :person is scoped to addresses
   # * CPK references will have to repeat all involved relations
   #
-  reference :person, addresses.person_id => people.id
+  references :person, addresses.person_id => people.id
 
   # ALTERNATIVE 2
   #
@@ -168,7 +168,7 @@ graph = DataMapper::Relation::Graph.new do
   # * for CPK references, the target relation must be repeated
   #
   addresses do
-    reference :person, person_id => people.id
+    references :person, person_id => people.id
   end
 
   # ALTERNATIVE 3
@@ -184,14 +184,14 @@ graph = DataMapper::Relation::Graph.new do
   # * not scoping attributes in reference definition might be confusing
   #
   link addresses, people do
-    reference :person, person_id => id
+    references :person, person_id => id
   end
 
   # OPTION 1
   #
   # self referential version of ALTERNATIVE 3
   link people, people do
-    reference :person, id => parent_id
+    references :person, id => parent_id
   end
 
   # OPTION 2
@@ -200,7 +200,7 @@ graph = DataMapper::Relation::Graph.new do
   # if only one param is passed to #link, a self referential
   # reference is assumed.
   link people do
-    reference :person, id => parent_id
+    references :person, id => parent_id
   end
 
 end
