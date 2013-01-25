@@ -11,7 +11,7 @@ graph = DataMapper::Relation::Graph.new do
 
   base_relation :people do
 
-    # only base relations nodes expose this method
+    # only base relation node builders expose this method
     #
     repository :postgres
 
