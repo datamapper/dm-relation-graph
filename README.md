@@ -41,6 +41,8 @@ graph = DataMapper::Relation::Graph.new do
 
     one_to_many :addresses, addresses.reference(:person)
 
+    # ALTERNATIVE 1
+
     # through relationship exists
 
     one_to_many :links_to_followers, people_links.reference(:followed)
@@ -93,6 +95,17 @@ graph = DataMapper::Relation::Graph.new do
       through people_links.reference(:follower)
       via people_links.reference(:followed)
     end
+
+    # ALTERNATIVE 2 (using bridges)
+
+    many_to_many :followers, people_links.bridge(:followers) do |optional, params|
+      # some fancy operation
+    end
+
+    many_to_many :followed_people, people_links.bridge(:followed_people) do |optional, params|
+      # some fancy operation
+    end
+
   end
 
   base_relation :addresses do
@@ -132,6 +145,10 @@ graph = DataMapper::Relation::Graph.new do
 
     references :follower, follower_id => people.id
     references :followed, followed_id => people.id
+
+    # bridges defined for many_to_many ALTERNATIVE 2
+    bridge :followed_people, reference(:follower) => reference(:followed)
+    bridge :followers, reference(:followed) => reference(:follower)
   end
 
   # register arbitrary relations and give them a name.
